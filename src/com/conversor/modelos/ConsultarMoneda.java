@@ -9,8 +9,8 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class ConsultarMoneda {
-    public Moneda buscaMoneda() {
-        URI direccion = URI.create("");
+    public Moneda buscaMoneda(String moneda_base, String moneda_target) {
+        URI direccion = URI.create("https://v6.exchangerate-api.com/v6/9f93a46712c6814f2ab7ed60/pair/"+moneda_base+"/"+moneda_target);
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
@@ -23,7 +23,5 @@ public class ConsultarMoneda {
         } catch (Exception  e) {
             throw new RuntimeException("No se encontro la moneda");
         }
-
-
     }
 }
